@@ -24,9 +24,9 @@ public class Main extends Application{
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		logger.info("Launching...");
+		logger.info("Initializing...");
 		//Set title
-		stage.setTitle("Learning Riven");
+		stage.setTitle("Riven Tracker");
 		stage.getIcons().add(new Image(Main.class.getResourceAsStream("images/ChannelLogo.png")));
 		
 		BorderPane root = new BorderPane();
@@ -35,6 +35,7 @@ public class Main extends Application{
 		Scene scene = new Scene(root, 800, 600);
 		stage.setScene(scene);
 		stage.show();
+		logger.info("Loaded");
 	}
 
 	@Override
@@ -43,11 +44,7 @@ public class Main extends Application{
 	}
 
 	public void fillPane(BorderPane root) {
-		root.setTop(new Button("Top"));
-		root.setBottom(new Button("Bottom"));
-		root.setLeft(new Button("Left"));
-		root.setRight(new Button("Right"));
-		root.setCenter(new Button("Center"));
+		
 	}
 		
 }
