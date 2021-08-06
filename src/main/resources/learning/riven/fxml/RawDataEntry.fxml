@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="rawDataEntryBP" fx:id="rawDataEntryPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox fx:id="headerContainer" prefHeight="83.0" prefWidth="906.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="headerPane" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="headerLabel" alignment="CENTER" prefHeight="80.0" prefWidth="800.0" text="Raw Data Entry">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <ButtonBar fx:id="footerContainer" prefHeight="53.0" prefWidth="906.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button cache="true" depthTest="ENABLE" minWidth="66.0" mnemonicParsing="false" prefHeight="25.0" text="Add">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+            <Button mnemonicParsing="false" text="Exit" />
+        </buttons>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </ButtonBar>
+   </bottom>
+   <center>
+      <VBox fx:id="contentContainer" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane fx:id="overallHeaderPane" prefHeight="44.0" prefWidth="906.0">
+               <children>
+                  <Label fx:id="overallHeaderLabel" alignment="CENTER" layoutY="-7.0" prefHeight="51.0" prefWidth="800.0" text="Overall Statistics">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Line endX="750.0" layoutX="25.0" layoutY="44.0" />
+               </children>
+            </Pane>
+            <GridPane fx:id="overallData">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="222.0" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="300.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.0" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="402.0" minWidth="10.0" prefWidth="300.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="playDateLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Play Date">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <DatePicker fx:id="playDate" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Please select/enter date" GridPane.columnIndex="1" />
+                  <Label fx:id="resultLabel" alignment="CENTER" prefHeight="30.0" prefWidth="147.0" text="Result" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="270.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <CheckBox fx:id="resultTrue" mnemonicParsing="false" text="Victory" />
+                        <CheckBox fx:id="resultFalse" mnemonicParsing="false" text="Defeat" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="gameTimeLabel" alignment="CENTER" prefHeight="30.0" prefWidth="147.0" text="Game Time" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <TextField fx:id="gameTime" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Please enter game time (ex. mm:ss)" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="finalLevelLabel" alignment="CENTER" prefHeight="30.0" prefWidth="174.0" text="Final Level" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <TextField fx:id="finalLevel" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="End of Game Level" GridPane.columnIndex="3" />
+                  <Label fx:id="gameModeLabel" alignment="CENTER" prefHeight="30.0" prefWidth="176.0" text="Game Mode" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <ComboBox fx:id="gameModeComboBox" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Please select game type" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </VBox.margin>
+            </GridPane>
+            <Pane fx:id="postGameHeaderPane" prefHeight="44.0" prefWidth="906.0">
+               <children>
+                  <Label fx:id="postGameHeaderLabel" alignment="CENTER" prefHeight="44.0" prefWidth="800.0" text="Post Game Statistics">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Line endX="750.0" layoutX="25.0" layoutY="44.0" />
+               </children>
+            </Pane>
+            <GridPane fx:id="postGameData">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="222.0" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="300.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.0" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="402.0" minWidth="10.0" prefWidth="300.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="championLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Opponent">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="lpLabel" alignment="CENTER" prefHeight="30.0" prefWidth="147.0" text="LP" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="killsLabel" alignment="CENTER" prefHeight="30.0" prefWidth="147.0" text="Kills" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="firstItemTimeLabel" alignment="CENTER" prefHeight="30.0" prefWidth="176.0" text="First Item Time" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="deathsLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Deaths" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="assistsLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Assists" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="totalGoldLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Total Gold" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="wardsLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Wards" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="riotVisionScoreLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Vision Score" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="csLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="CS" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <ComboBox fx:id="championComboBox" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Please select champion" GridPane.columnIndex="1" />
+                  <TextField fx:id="totalLP" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Game LP (ex. 15 for both w/l)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="totalKills" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Total Kills" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="totalDeaths" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Total Deaths" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="totalAssists" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Total Assists" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="totalCS" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Total CS" GridPane.columnIndex="3" />
+                  <TextField fx:id="firstItemTime" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="mm:ss (ex: 23:45)" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="totalGold" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Total Gold" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <TextField fx:id="totalWardsPlaced" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Total Wards Placed" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <TextField fx:id="riotVisionScore" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="Total Vision Score (By Riot)" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </VBox.margin>
+            </GridPane>
+            <Pane fx:id="uggHeaderPane" prefHeight="44.0" prefWidth="906.0">
+               <children>
+                  <Label fx:id="uggHeaderLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="800.0" text="U.GG Carry Score">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Line endX="750.0" layoutX="25.0" layoutY="44.0" />
+               </children>
+            </Pane>
+            <HBox fx:id="uggSubheader" prefHeight="51.0" prefWidth="800.0">
+               <children>
+                  <GridPane prefHeight="51.0" prefWidth="806.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="hardCarryLabel" alignment="CENTER" text="Hard Carry">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="teamCarryLabel" alignment="CENTER" text="Team Carry" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </HBox>
+            <GridPane fx:id="uggData">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </VBox.margin>
+               <children>
+                  <Label fx:id="goldShareLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Gold Share">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="damageShareLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Damage Share" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="levelDifferenceLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Level Difference" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="killParticipationLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Kill Participation" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="visionScoreLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Vision Score" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="efficiencyLabel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Efficiency" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets left="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <TextField fx:id="goldShare" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="U.gg Gold Share Statistic" GridPane.columnIndex="1" />
+                  <TextField fx:id="damageShare" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="U.gg Damage Share Statistic" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="levelDifference" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="U.gg Level Difference Statistic" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="killParticipation" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="U.gg Kill Participation Statistic" GridPane.columnIndex="3" />
+                  <TextField fx:id="uggVisionScore" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="U.gg Vision Score Statistic" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="efficiency" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" promptText="U.gg Efficiency Statistic" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
