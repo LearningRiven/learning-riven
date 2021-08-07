@@ -1,4 +1,4 @@
-package learning.riven;
+package trainer;
 
 public class Launcher {
 

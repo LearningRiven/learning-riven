@@ -19,6 +19,18 @@ javafx {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
+    
+    //Joda Time - Time/Date Handler
+    implementation group: 'joda-time', name: 'joda-time', version: '2.10.10'
+    
+    //Apache Poi - Excel Generation
+    implementation group: 'org.apache.poi', name: 'poi', version: '5.0.0'
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.0.0'
+    implementation group: 'org.apache.poi', name: 'poi-ooxml-full', version: '5.0.0'
+    
+    //GSON - json parser from google
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.7'
+    
 }
 
 tasks.withType(JavaExec) {

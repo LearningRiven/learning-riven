@@ -1,4 +1,4 @@
-package learning.riven;
+package trainer;
 
 import java.io.IOException;
 import java.util.logging.Logger;
