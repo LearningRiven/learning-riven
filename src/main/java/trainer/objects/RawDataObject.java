@@ -97,11 +97,11 @@ public class RawDataObject {
 		
 		//First Item Time
 		try {
-			this.gameTime = LocalTime.parse(firstItemTime, timeFormatter);
+			this.firstItemTime = LocalTime.parse(firstItemTime, timeFormatter);
 		}
 		catch(Exception e){
 			e.printStackTrace();
-			this.gameTime =LocalTime.parse("20:00", timeFormatter);
+			this.firstItemTime =LocalTime.parse("20:00", timeFormatter);
 		}
 		
 		this.finalLevel = Integer.parseInt(finalLevel);
@@ -123,11 +123,11 @@ public class RawDataObject {
 		
 		if(wonGame.equals("true")) {
 			this.wonGame = true;
-			this.lp = Integer.parseInt(lp);
+			this.lp = Math.abs(Integer.parseInt(lp));
 		}
 		else {
 			this.wonGame = false;
-			this.lp = Integer.parseInt(lp) * -1;
+			this.lp = Math.abs(Integer.parseInt(lp)) * -1;
 		}
 		
 		this.gameModes = populateGameModes("listOfGameModes.json");

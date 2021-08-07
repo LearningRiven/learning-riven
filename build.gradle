@@ -39,4 +39,4 @@ tasks.withType(JavaExec) {
     }
 }
 
-mainClassName = "learning.riven.Launcher"
+mainClassName = "trainer.Launcher"

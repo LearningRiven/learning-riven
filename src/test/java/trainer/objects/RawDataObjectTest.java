@@ -2,6 +2,7 @@ package trainer.objects;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.joda.time.LocalTime;
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class RawDataObjectTest {
 	
 	@Test
 	public void testFullConstructorSimple() {
-		RawDataObject obj = createDefaultTestItem();
+		RawDataObject obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "true", "1");
 		
 		assertEquals("Final Level", Integer.valueOf(15), obj.getFinalLevel());
 		assertEquals("Kills", Integer.valueOf(20), obj.getKills());
@@ -58,30 +59,75 @@ public class RawDataObjectTest {
 	
 	@Test
 	public void testFullConstructorDates() {
-		//TODO
+		//Test Good Entry
+		RawDataObject obj = createDefaultTestItem("2/2/2022", "40:10", "30:20", "true", "1");
+		
+		assertEquals("Play Date Year", 2022, obj.getPlayDate().getYear());
+		assertEquals("Play Date Month", 1, obj.getPlayDate().getMonthOfYear());
+		assertEquals("Play Date Day", 2, obj.getPlayDate().getDayOfMonth());
+		
+		
+		assertEquals("Game Time Hour", 0, obj.getGameTime().getHourOfDay());
+		assertEquals("Game Time Minute", 40, obj.getGameTime().getMinuteOfHour());
+		assertEquals("Game Time Seconds", 10, obj.getGameTime().getSecondOfMinute());
+		assertEquals("Game Time Milliseconds", 0, obj.getGameTime().getMillisOfSecond());
+		
+		assertEquals("First Item Hour", 0, obj.getFirstItemTime().getHourOfDay());
+		assertEquals("First Item Minute", 30, obj.getFirstItemTime().getMinuteOfHour());
+		assertEquals("First Item Seconds", 20, obj.getFirstItemTime().getSecondOfMinute());
+		assertEquals("First Item Milliseconds", 0, obj.getFirstItemTime().getMillisOfSecond());
+		
+		//Test Bad Entries
+		obj = createDefaultTestItem("apple", "apple", "apple", "true", "1");
+		assertEquals("Play Date", obj.getDateFormat().parseDateTime("03/31/1996"), obj.getPlayDate());
+		assertEquals("Game Time", LocalTime.parse("30:00", obj.getTimeFormat()), obj.getGameTime());
+		assertEquals("First Item Time", LocalTime.parse("20:00", obj.getTimeFormat()), obj.getFirstItemTime());
+		
+		obj = createDefaultTestItem("1-2-3333", "05:02:20", "07:20:30", "true", "1");
+		assertEquals("Play Date", obj.getDateFormat().parseDateTime("03/31/1996"), obj.getPlayDate());
+		assertEquals("Game Time", LocalTime.parse("30:00", obj.getTimeFormat()), obj.getGameTime());
+		assertEquals("First Item Time", LocalTime.parse("20:00", obj.getTimeFormat()), obj.getFirstItemTime());
+		
 	}
 	
 	@Test
-	public void testFullConstructorLP() {
-		//TODO
+	public void testFullConstructorWinLP() {
+		RawDataObject obj;
+		
+		//Test Good Win Positive Value
+		obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "true", "10");
+		assertTrue("Won", obj.getWonGame());
+		assertEquals("Correct LP", Integer.valueOf(10), obj.getLp());
+		
+		//Test Good Win Negative Value
+		obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "true", "-10");
+		assertTrue("Won", obj.getWonGame());
+		assertEquals("Correct LP", Integer.valueOf(10), obj.getLp());
 	}
 	
 	@Test
-	public void testFullConstructorBadNumberFormats() {
-		//TODO
+	public void testFullConstructorLossLP() {
+		//Test Good Win
+		RawDataObject obj;
+		
+		//Test Good Loss Negative Value
+		obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "false", "-10");
+		assertFalse("Lost", obj.getWonGame());
+		assertEquals("Correct LP", Integer.valueOf(-10), obj.getLp());
+		
+		//Test Good Loss Positive Value
+		obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "false", "10");
+		assertFalse("Lost", obj.getWonGame());
+		assertEquals("Correct LP", Integer.valueOf(-10), obj.getLp());
 	}
 	
-	private RawDataObject createDefaultTestItem() {
-		String playDate = "03/25/2021";
-		String gameTime = "23:45";
+	private RawDataObject createDefaultTestItem(String playDate, String gameTime, String firstItemTime, String wonGame, String lp) {
 		String finalLevel = "15";
-		String lp = "12";
 		String kills = "20";
 		String deaths =  "5";
 		String assists = "10";
 		String totalGold = "21245";
 		String totalWards = "15";
-		String firstItemTime = "11:25";
 		String riotVisionScore = "21";
 		String cs = "200";
 		String goldShare = "81";
@@ -92,7 +138,6 @@ public class RawDataObjectTest {
 		String efficiency = "86";
 		String gameMode = "Ranked Solo/Duo";
 		String opponent = "Renekton";
-		String wonGame = "true";
 		
 		RawDataObject obj = new RawDataObject(playDate, gameTime, finalLevel, lp, kills, deaths, 
 				assists, totalGold, totalWards, firstItemTime, riotVisionScore, cs, goldShare, 
