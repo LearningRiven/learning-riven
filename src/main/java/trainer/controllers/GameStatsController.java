@@ -82,7 +82,8 @@ public class GameStatsController implements Initializable{
 	}
 	
 	public void onAdd(ActionEvent e) {
-		System.out.println("adding");
+		final String val = System.getProperty("riotKey");
+		System.out.println(val);
 	}
 	
 	public void onClear(ActionEvent e) {
