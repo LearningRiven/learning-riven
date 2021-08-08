@@ -1,8 +1,0 @@
-{ 
-	"gameModes" : [ 
-		"Blind Pick",
-		"Draft Pick",
-		"Ranked Solo/Duo",
-		"Ranked Flex"
-	]
-}

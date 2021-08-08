@@ -1,21 +1,16 @@
 package trainer.objects;
 
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import com.google.gson.Gson;
+public class GameStatsObject {
 
-import trainer.processing.Champions;
-import trainer.processing.GameModes;
-
-public class RawDataObject {
-
+	static Logger logger = Logger.getLogger(GameStatsObject.class.getName());
+	
 	private DateTime playDate;
 	private LocalTime gameTime;
 	private Integer finalLevel;
@@ -38,13 +33,10 @@ public class RawDataObject {
 	private String opponent;
 	private Boolean wonGame;
 	
-	private GameModes gameModes;
-	private Champions champions;
-	
 	DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("MM/DD/YYYY");
 	DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("mm:ss");
 	
-	public RawDataObject() {
+	public GameStatsObject() {
 		this.playDate = dateTimeFormatter.parseDateTime("03/31/1996");
 		this.gameTime = LocalTime.parse("30:00", timeFormatter);
 		this.firstItemTime = LocalTime.parse("20:00", timeFormatter);
@@ -66,11 +58,9 @@ public class RawDataObject {
 		this.opponent = new String("N/A");
 		this.lp = 0;
 		this.wonGame = false;
-		this.gameModes = populateGameModes("listOfGameModes.json");
-		this.champions = populateChampions("listOfChampions.json");
 	}
 	
-	public RawDataObject(String playDate, String gameTime, String finalLevel, String lp, String kills,
+	public GameStatsObject(String playDate, String gameTime, String finalLevel, String lp, String kills,
 			String deaths, String assists, String totalGold, String totalWards, String firstItemTime, 
 			String riotVisionScore, String cs, String goldShare, String damageShare, String levelDifference,
 			String killParticipation, String uggVisionScore, String efficiency, String gameMode, String opponent,
@@ -129,9 +119,6 @@ public class RawDataObject {
 			this.wonGame = false;
 			this.lp = Math.abs(Integer.parseInt(lp)) * -1;
 		}
-		
-		this.gameModes = populateGameModes("listOfGameModes.json");
-		this.champions = populateChampions("listOfChampions.json");
 	}
 
 	public DateTime getPlayDate() {
@@ -300,68 +287,6 @@ public class RawDataObject {
 
 	public void setWonGame(Boolean wonGame) {
 		this.wonGame = wonGame;
-	}
-
-	public GameModes getGameModes() {
-		return gameModes;
-	}
-
-	public void setGameModes(GameModes gameModes) {
-		this.gameModes = gameModes;
-	}
-
-	public Champions getOpponents() {
-		return champions;
-	}
-
-	public void setOpponents(Champions champions) {
-		this.champions = champions;
-	}
-
-	private Champions populateChampions(String fileName){
-		Champions champs = null;
-		try {
-		    // create Gson instance
-		    Gson gson = new Gson();
-
-		    // create a reader
-		    Reader reader = Files.newBufferedReader(Paths.get("data/" + fileName));
-
-		    // convert JSON file to map
-		    Champions c = gson.fromJson(reader, Champions.class);
-
-		    // close reader
-		    reader.close();
-		    
-		    return c;
-
-		} catch (Exception ex) {
-		    ex.printStackTrace();
-		}
-		return champs;
-	}
-	
-	private GameModes populateGameModes(String fileName){
-		GameModes modes = null;
-		try {
-		    // create Gson instance
-		    Gson gson = new Gson();
-
-		    // create a reader
-		    Reader reader = Files.newBufferedReader(Paths.get("data/" + fileName));
-
-		    // convert JSON file to map
-		    GameModes gm = gson.fromJson(reader, GameModes.class);
-
-		    // close reader
-		    reader.close();
-		    
-		    return gm;
-
-		} catch (Exception ex) {
-		    ex.printStackTrace();
-		}
-		return modes;
 	}
 	
 	//For Testing

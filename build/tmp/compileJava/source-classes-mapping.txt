@@ -1,13 +1,13 @@
+trainer/objects/GameStatsObject.java
+ trainer.objects.GameStatsObject
+trainer/data/GameModes.java
+ trainer.data.GameModes
+trainer/data/Champions.java
+ trainer.data.Champions
 trainer/Main.java
  trainer.Main
  trainer.Main$1
-trainer/processing/Champions.java
- trainer.processing.Champions
 trainer/Launcher.java
  trainer.Launcher
-trainer/objects/RawDataObject.java
- trainer.objects.RawDataObject
-trainer/processing/GameModes.java
- trainer.processing.GameModes
-trainer/controllers/RawDataEntryController.java
- trainer.controllers.RawDataEntryController
+trainer/controllers/GameStatsController.java
+ trainer.controllers.GameStatsController

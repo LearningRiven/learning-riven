@@ -2,16 +2,19 @@ package trainer.objects;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.joda.time.LocalTime;
 import org.junit.Test;
 
+import trainer.data.GameModes;
+
 public class RawDataObjectTest {
 	
 	@Test
 	public void testDefault() {
-		RawDataObject test = new RawDataObject();
+		GameStatsObject test = new GameStatsObject();
 	
 		assertEquals("Final Level", Integer.valueOf(0), test.getFinalLevel());
 		assertEquals("Kills", Integer.valueOf(0), test.getKills());
@@ -37,7 +40,7 @@ public class RawDataObjectTest {
 	
 	@Test
 	public void testFullConstructorSimple() {
-		RawDataObject obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "true", "1");
+		GameStatsObject obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "true", "1");
 		
 		assertEquals("Final Level", Integer.valueOf(15), obj.getFinalLevel());
 		assertEquals("Kills", Integer.valueOf(20), obj.getKills());
@@ -60,7 +63,7 @@ public class RawDataObjectTest {
 	@Test
 	public void testFullConstructorDates() {
 		//Test Good Entry
-		RawDataObject obj = createDefaultTestItem("2/2/2022", "40:10", "30:20", "true", "1");
+		GameStatsObject obj = createDefaultTestItem("2/2/2022", "40:10", "30:20", "true", "1");
 		
 		assertEquals("Play Date Year", 2022, obj.getPlayDate().getYear());
 		assertEquals("Play Date Month", 1, obj.getPlayDate().getMonthOfYear());
@@ -92,7 +95,7 @@ public class RawDataObjectTest {
 	
 	@Test
 	public void testFullConstructorWinLP() {
-		RawDataObject obj;
+		GameStatsObject obj;
 		
 		//Test Good Win Positive Value
 		obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "true", "10");
@@ -108,7 +111,7 @@ public class RawDataObjectTest {
 	@Test
 	public void testFullConstructorLossLP() {
 		//Test Good Win
-		RawDataObject obj;
+		GameStatsObject obj;
 		
 		//Test Good Loss Negative Value
 		obj = createDefaultTestItem("1/1/2021", "30:00", "30:00", "false", "-10");
@@ -121,7 +124,7 @@ public class RawDataObjectTest {
 		assertEquals("Correct LP", Integer.valueOf(-10), obj.getLp());
 	}
 	
-	private RawDataObject createDefaultTestItem(String playDate, String gameTime, String firstItemTime, String wonGame, String lp) {
+	private GameStatsObject createDefaultTestItem(String playDate, String gameTime, String firstItemTime, String wonGame, String lp) {
 		String finalLevel = "15";
 		String kills = "20";
 		String deaths =  "5";
@@ -139,7 +142,7 @@ public class RawDataObjectTest {
 		String gameMode = "Ranked Solo/Duo";
 		String opponent = "Renekton";
 		
-		RawDataObject obj = new RawDataObject(playDate, gameTime, finalLevel, lp, kills, deaths, 
+		GameStatsObject obj = new GameStatsObject(playDate, gameTime, finalLevel, lp, kills, deaths, 
 				assists, totalGold, totalWards, firstItemTime, riotVisionScore, cs, goldShare, 
 				damageShare, levelDifference, killParticipation, uggVisionScore, efficiency, gameMode, opponent, 
 				wonGame);

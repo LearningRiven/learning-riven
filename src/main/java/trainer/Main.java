@@ -45,13 +45,12 @@ public class Main extends Application{
 	public Parent createRoot() {
 		Parent root;
 		try {
-			root = FXMLLoader.load(Main.class.getResource("fxml/RawDataEntry.fxml"));
-			System.out.println(root);
+			root = FXMLLoader.load(Main.class.getResource("fxml/GameStats.fxml"));
+			logger.info("Loading the root file: " + root);
 			return root;
 		} catch (IOException e) {
 			e.printStackTrace();
-			return new Parent() {
-			};
+			return new Parent() {};
 		}
 	}
 	
