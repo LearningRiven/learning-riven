@@ -1,8 +1,7 @@
 trainer/data/Champions.java
  trainer.data.Champions
-trainer/Main.java
- trainer.Main
- trainer.Main$1
+trainer/controllers/GameStatsController.java
+ trainer.controllers.GameStatsController
 trainer/Launcher.java
  trainer.Launcher
 trainer/excel/GameStatsAddService.java
@@ -11,5 +10,6 @@ trainer/objects/GameStatsObject.java
  trainer.objects.GameStatsObject
 trainer/data/GameModes.java
  trainer.data.GameModes
-trainer/controllers/GameStatsController.java
- trainer.controllers.GameStatsController
+trainer/Main.java
+ trainer.Main
+ trainer.Main$1

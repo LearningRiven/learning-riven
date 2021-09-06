@@ -2,23 +2,23 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'application'
+    id 'maven'
+    id 'maven-publish'
     id 'org.openjfx.javafxplugin' version '0.0.7'
 }
-
-repositories {
-    mavenCentral()
-}
-
 
 sourceCompatibility = 11
 targetCompatibility = 11
 
-javafx {
-    version = "12"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+//Specifies the online repository to use when trying to download jars
+repositories {
+    mavenCentral()
 }
 
+//Dependencies for the project go here
 dependencies {
+
+	//JUnit - library for testing the application
     testImplementation 'junit:junit:4.12'
     
     //Joda Time - Time/Date Handler
@@ -37,14 +37,24 @@ dependencies {
     
 }
 
+javafx {
+    version = "12"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+//Wires the application main class to be the main class in the context of gradle
 tasks.withType(JavaExec) {
+	//This is to handle debugging the application
     if (System.getProperty('DEBUG', 'false') == 'true') {
         jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9099'
     }
     
+    //This loads the properties file that has the keys in it. Not committed to github and should be manually created
     Properties properties = new Properties()
 	properties.load(project.file('gradle.properties').newDataInputStream())
     systemProperty "riotKey", properties.getProperty('riotKey')
 }
 
-mainClassName = "trainer.Launcher"
+application {
+	mainClass.set("trainer.Launcher")
+}
